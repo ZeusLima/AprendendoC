@@ -7,8 +7,8 @@ int main(){
 
     int vetor[n];
 
-    for(int k = 0; k < n; k++){
-        scanf("%d ", &vetor[k]);
+    for(int i = 0; i < n; i++){
+        scanf("%d ", &vetor[i]);
     }
 
     for(int i = 0; i < n-2; i++){
@@ -17,9 +17,14 @@ int main(){
                 aux = vetor[i];
                 vetor[i] = vetor[j];
                 vetor[j] = aux;
+            
             }
         }
-        printf("%d ", vetor[i]);
+    
+    }
+
+    for(int i = 0; i < n; i++){
+        printf("%d ", &vetor[i]);
     }
 
     return 0;
