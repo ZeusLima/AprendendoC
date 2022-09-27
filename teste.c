@@ -1,4 +1,6 @@
-#include <stdio.h>
+/*#include <stdio.h>
+
+
 
 void recebeVetor(int array[], int tam){
 
@@ -42,4 +44,27 @@ int main(){
 imprimeVetor(array,4);
 
 return 0;
+}
+*/
+
+#include <stdio.h>
+
+int main(){
+
+int matriz[2][2];
+/*
+    for(int i=0; i<1; i++){
+        for(int j=0; j<1; j++){
+      scanf("%d", &matriz[i][j]);
+        }
+    }
+
+printf("\n");printf("\n");printf("---------------------------------------------------");printf("\n");printf("\n");
+*/
+    for(int i = 0; i< 2; i++){
+        for(int j = 0; j < 2; j++){
+            printf("X ");
+        }printf("\n");
+    }
+
 }
