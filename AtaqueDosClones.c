@@ -2,53 +2,6 @@
 
 int main(){
 
-<<<<<<< HEAD
-int N, M, x, y, pico;
-printf("INSIRA O TAMANHO DO MAPA\n");
-    
-    scanf("%d %d", &N, &M);
-
-    int mapa[N][M];
-
-printf("INSIRA AS UULTIMAS COORDENADAS: \n");
-
-    scanf("%d %d", &x, &y);
-
-
-    for(int i = 0; i < N; i++){
-        for(int j = 0; j < M; j++){
-            scanf("%d", mapa[i][j]);
-            
-            if(i == 0 && j == 0){
-                pico = mapa[0][0];
-                }else{
-                    if(mapa[i][j] > pico){
-                        pico = mapa[i][j];
-                    }
-                }
-        }
-    }
-/*
-   for(int i = 0; i < N; i++){
-        for(int j = 0; j < M; j++){
-            switch (expression)
-            {
-            case j:
-                 code 
-                break;
-            
-            default:
-                break;
-            }
-        }
-    }
-*/   
-
-
-
-return 0;
-
-=======
     int N, M, x, y;
 
 printf("INSIRA O TAMANHO DO MAPA\n");
@@ -56,20 +9,17 @@ printf("INSIRA O TAMANHO DO MAPA\n");
     scanf("%d %d", &N, &M);
     
     int mapa[N][M];
-    int mapaPicos[N][M];
+    int Nv = N + 2, Mv = M + 2;
+    int mapaDeVerific[Nv][Mv], mapaPicos[Nv][Mv];
+
 
 ///zerando o mapa de picos
-    for(int i = 0; i< N; i++){
-        for(int j = 0; j < M; j++){
+    for(int i = 0; i< Nv; i++){
+        for(int j = 0; j < Mv; j++){
             mapaPicos[i][j] = 0;
         }
     }
 
-
-printf("\nINSIRA AS UULTIMAS COORDENADAS: \n");
-
-    scanf("%d %d", &x, &y);
-    
 printf("\nINSIRA O MAPA DE RADIACAO: \n");
 
     for(int i = 0; i < N; i++){
@@ -78,25 +28,48 @@ printf("\nINSIRA O MAPA DE RADIACAO: \n");
         }
     }
 
-printf("\nIMPRIMINDO MAPA DE PICOS ANTES DOS TESTES: \n");
+/// jogando o mapa de radiação dentro do mapa de verificação
+    for(int i = 0; i< Nv; i++){
+        for(int j = 0; j < Mv; j++){
+            mapaDeVerific[i+1][j+1] = mapa[i][j];
+            mapaDeVerific[i][4] = 0;
+            mapaDeVerific[4][j] = 0;
+            mapaDeVerific[i][0] = 0;
+            mapaDeVerific[0][j] = 0;
+        }
+    }
 
+    ///ATRIBUINDO i'S NOS PICOS DO MAPA DE PICOS
     for(int i = 0; i < N; i++){
         for(int j = 0; j < M; j++){
-            printf("\t%d", mapa[i][j]);
+            if( mapaDeVerific[i][j] > mapaDeVerific[i-1][j-1] && mapaDeVerific[i][j] > mapaDeVerific[i-1][j] && mapaDeVerific[i][j] > mapaDeVerific[i-1][j+1] &&
+                mapaDeVerific[i][j] > mapaDeVerific[i][j-1]   && mapaDeVerific[i][j] > mapaDeVerific[i][j+1] &&
+                mapaDeVerific[i][j] > mapaDeVerific[i+1][j-1] && mapaDeVerific[i][j] > mapaDeVerific[i+1][j] && mapaDeVerific[i][j] > mapaDeVerific[i+1][j+1])
+                {
+                mapaPicos[i][j] = 1;
+                }
+        }
+    }
+
+
+printf("\nINSIRA AS UULTIMAS COORDENADAS DO JEDI: \n");
+
+    scanf("%d %d", &x, &y);
+
+
+
+/*
+    printf("\nIMPRIMINDO MAPA de verific: \n");
+
+    for(int i = 0; i < Nv; i++){
+        for(int j = 0; j < Mv; j++){
+            printf("\t%d", mapaDeVerific[i][j]);
         }printf("\n");
     }
 
 
-///ATRIBUINDO 1S NOS PICOS DO MAPA DE PICOS
-    for(int i = 0; i < N; i++){
-        for(int j = 0; j < M; j++){
-            if(mapa[i][j] > mapa[i-1][j-1] && mapa[i][j] > mapa[i-1][j] && mapa[i][j] > mapa[i-1][j+1] &&
-            mapa[i][j] > mapa[i][j-1] && mapa[i][j] > mapa[i][j+1] &&
-            mapa[i][j] > mapa[i+1][j-1] && mapa[i][j] > mapa[i+1][j]  && mapa[i][j] > mapa[i+1][j+1]){
-                mapaPicos[i][j] = 1;
-            }
-        }
-    }
+
+
 
 
 ///IMPRIMINDO MAPA 
@@ -115,8 +88,7 @@ printf("\nIMPRIMINDO MAPA DE PICOS DEPOIS DOS TESTES: \n");
             printf("\t%d", mapaPicos[i][j]);
         }printf("\n");
     }
-
+*/
 
 return 0;
->>>>>>> 3e79ad4b336c1868cf0bb4af1ad63c0142dadcf0
 }
