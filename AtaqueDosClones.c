@@ -11,6 +11,8 @@ printf("INSIRA O TAMANHO DO MAPA\n");
     int mapa[N][M];
     int Nv = N + 2, Mv = M + 2;
     int mapaDeVerific[Nv][Mv], mapaPicos[Nv][Mv];
+    int Resgate = -1, Descanse = -1;
+    int cont = 0; ///contará as impressões de locais de pico de radiação
 
 
 ///zerando o mapa de picos
@@ -51,10 +53,21 @@ printf("\nINSIRA O MAPA DE RADIACAO: \n");
         }
     }
 
-
 printf("\nINSIRA AS UULTIMAS COORDENADAS DO JEDI: \n");
 
     scanf("%d %d", &x, &y);
+
+    for(int i = 0; i < N; i++){
+        for(int j = 0; j < M; j++){
+            if(mapaPicos[i][j] == 1 && i == x && j == y){
+                Descanse = 1;
+                cont++;    
+                printf("Local %d: %d %d", cont, i, j);
+            }
+        }
+    }
+
+
 
 
 
