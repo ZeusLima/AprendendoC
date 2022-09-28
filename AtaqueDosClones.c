@@ -41,7 +41,7 @@ printf("\nINSIRA O MAPA DE RADIACAO: \n");
         }
     }
 
-    ///ATRIBUINDO i'S NOS PICOS DO MAPA DE PICOS
+    ///ATRIBUINDO 1'S NOS PICOS DO MAPA DE PICOS
     for(int i = 0; i < N; i++){
         for(int j = 0; j < M; j++){
             if( mapaDeVerific[i][j] > mapaDeVerific[i-1][j-1] && mapaDeVerific[i][j] > mapaDeVerific[i-1][j] && mapaDeVerific[i][j] > mapaDeVerific[i-1][j+1] &&
@@ -59,16 +59,13 @@ printf("\nINSIRA AS UULTIMAS COORDENADAS DO JEDI: \n");
 
     for(int i = 0; i < N; i++){
         for(int j = 0; j < M; j++){
-            if(mapaPicos[i][j] == 1 && i == x && j == y){
+            if(mapaPicos[i][j] == 1 && i == x-1 && j == y-1){
                 Descanse = 1;
                 cont++;    
-                printf("Local %d: %d %d", cont, i, j);
+                printf("Local %d: %d %d", cont, i+1, j+1);
             }
         }
     }
-
-
-
 
 
 /*
