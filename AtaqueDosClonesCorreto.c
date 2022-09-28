@@ -88,4 +88,7 @@ printf("\nINSIRA O MAPA DE RADIACAO: \n");
 
 
 return 0;
+
+///alterando código pra subir correto
+
 }
