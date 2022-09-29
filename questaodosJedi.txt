@@ -66,7 +66,7 @@ scanf("%d %d", &Jx, &Jy);
     if(FlagResgate == 1){
         printf("Ao resgate!\n");
     }else{
-        printf("Desanse na Força...");
+        printf("Descanse na Força...");
     }
     
 /*
@@ -90,7 +90,4 @@ scanf("%d %d", &Jx, &Jy);
 
 
 return 0;
-
-///alterando código pra subir correto
-
 }

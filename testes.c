@@ -29,7 +29,7 @@ int main(void)
 
     return 0;
 }
-*/
+
 
 #include<stdio.h> ///EXCHANGE SORT DO PROFESSOR <<<<<<
 
@@ -67,4 +67,17 @@ int main(){
 
     return 0;
 
+}
+*/
+
+
+#include<stdio.h> 
+int main(){
+    char teste;
+
+    scanf("%c", &teste);
+    if(teste == '\n'){teste = 'XX';}
+    printf("---%c---", teste);
+
+    return 0;
 }
