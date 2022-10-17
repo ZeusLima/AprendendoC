@@ -24,11 +24,5 @@ int main(){
 
     CamelCase(tamanho, texto);
 
-    
-
-
-
-
-
     return 0;
 }
