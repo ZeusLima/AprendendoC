@@ -56,6 +56,15 @@ void carrega_base(int posicao, char base[TAM][MAX_TEXTO]){
 
 }
 
+void imprime(char palavra, int n, char tabela[][MAX_TEXTO] ){
+
+    for(int i = 0; i < n; i++){
+        strcat(tabela[i], palavra);
+    }
+
+
+
+}
 
 
 int main(){
@@ -63,12 +72,25 @@ int main(){
     char consultas[TAM][MAX_TEXTO] = {0};
 
     int N, C;
+    char string[MAX_TEXTO];
+
+    //scanf("%d", &N); // se feito desta forma, o enter(\n) dado para confirmar o inteiro será incluído  dentro do fgets da função a seguir. Para evitar isso, inclui-se o \n
 
     scanf("%d\n", &N);
 
      for(int i = 0; i< N; i++){
         carrega_base(i, consultas);
      }
+
+    scanf("%d\n", &C);
+
+    for(int i = 0; i < C; i++){
+        fgets(string,MAX_TEXTO,stdin);
+    }
+
+    imprimeSugestoes(string, N, consultas);
+
+    printf("\n");
 
 
 

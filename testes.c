@@ -1,37 +1,91 @@
-#include <stdio.h>
-
-int main(){
-
-
-    int N;   // scanf("%d", &N);
-    N = 7;
-    int piramide[N][N];
+/*#include<stdio.h> ///EXCHANGE SORT
+int main(void)
+{
+    int array[5], i, j, temp,n;
 
 
-for(int i = 0; i < N; i++){
-    for(int j = 0; j < N; j++){            
-        piramide[i][j] = 2;
+    printf("Enter the number of elements : ");
+    scanf("%d",&n);
+    printf("Enter %d numbers : ",n);
+
+    for (i = 0; i < n; i++){
+        scanf("%d",&array[i]);
     }
-}
-int x = 0;
 
-        for(int i = 0; i < N; i++){
-            for(int j = 0; j < N; j++){            
-                if(i == 0 + x || j == 0 + x || i == N-1 - x || j == N-1 - x ) {
-                    if(piramide[i-1][j-1]>piramide[i][j]){
-                        piramide[i][j] = x+1;
-                    }
-                }
-                
-            }  
+    for(i = 0; i < (n -1); i++){
+        for (j=(i + 1); j < n; j++){
+            if (array[i] > array[j]){
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
         }
-        
+    }
+    printf("Sorted array is : ");
 
-    for(int i = 0; i < N; i++){
-        for(int j = 0; j < N; j++){
-            printf("%d ", piramide[i][j]);
-        }printf("\n");
+    for (i = 0; i < n; i++){
+        printf(" %d ",array[i]);
     }
 
     return 0;
 }
+
+
+#include<stdio.h> ///EXCHANGE SORT DO PROFESSOR <<<<<<
+
+void imprime_vetor(int v[], int n){
+    for( int i = 0; i < n; i++) printf("%d ", v[i]);
+    printf("\n");
+}
+
+void exchange_sort(int v[], int n){
+
+    for(int i = 0; i<= n-2; i++){
+        imprime_vetor(v,n);
+        for(int j = (i+1); j <= (n-1); j++){
+                if(v[i] > v[j]){
+                    int temp = v[i];
+                    v[i] = v[j];
+                    v[j] = temp;
+                }
+        }
+    }
+    imprime_vetor(v,n);
+
+}
+
+int main(){
+    int n;
+    scanf("%d", &n);
+    int v[n];
+    
+    for (int i = 0; i < n; i++){
+        scanf("%d", &v[i]);
+    }
+   
+    exchange_sort(v, n);
+
+    return 0;
+
+}
+*/
+
+
+#include<stdio.h>
+#include <string.h>
+
+int main(){
+  char texto[] = "André - Atacante - mil gols - campeão mundial - melhor que Pelé";
+  char* pedaco;
+
+  pedaco = strtok(texto, "-");
+
+  while(pedaco != NULL){
+    printf("%s\n", pedaco);
+
+    pedaco = strtok(NULL, "-");
+  }
+
+  return 0;
+}
+
