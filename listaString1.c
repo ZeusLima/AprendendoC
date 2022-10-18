@@ -2,12 +2,18 @@
 
 void CamelCase(int tam, char stringzada[tam]){
 
+    for(int i = 0; i < tam; i++){
+        stringzada[i] = tolower(stringzada[i]);
+    }
+
     for(int i = 0; i < 60; i++){
         
         stringzada[0] = toupper(stringzada[0]);
 
         if(stringzada[i] == ' '){
             stringzada[i+1] = toupper(stringzada[i+1]);
+        }else{
+
         }
     }
 
