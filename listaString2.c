@@ -56,12 +56,33 @@ float tam_med(int n, char matriz[][202]){
     return soma/n;
 }
 
-/*
-int prox_med(int n, char matriz[][202]){
-    tam_med(n, matriz); 
 
+int prox_med(int n, char matriz[][202]){ //tanto espaços quanto underline são incluídos
+    float tammanho_medio = tam_med(n, matriz);
+    char * pedaco;
+    int len_txt_mais_prox = 0;
+    
+
+    pedaco = strtok(matriz[0], " ");
+
+    char texto_mais_prox = pedaco;
+    len_txt_mais_prox = strlen(texto_mais_prox);
+
+    
+    while(pedaco != NULL){
+        
+    pedaco = strtok(NULL, "-");
+
+    if( (strlen(pedaco) > len_txt_mais_prox && strlen(pedaco) < tammanho_medio) || //ou
+        (strlen(pedaco) < len_txt_mais_prox && strlen(pedaco) > tammanho_medio)) { /*o tamanho da palavra cortada mais uma vez for mais proximo da media, ele vira o mais próximo da media*/
+        texto_mais_prox = pedaco;
+        len_txt_mais_prox = strlen(texto_mais_prox);
+    }
+  }
+    //printf("%s", texto_mais_prox);
+    return len_txt_mais_prox;
 }
-*/
+
 
 
 int main(){
@@ -77,9 +98,10 @@ int main(){
     //imprime_matriz_textos(N,texto);
 
 
-    printf("Tamanho máximo: %d\n", tam_max(N, texto));
-    printf("Tamanho mínimo: %d\n", tam_min(N, texto));
-    printf("Tamanho médio: %.2f\n", tam_med(N, texto));
+    //printf("Tamanho mAximo: %d\n", tam_max(N, texto));
+    //printf("Tamanho mInimo: %d\n", tam_min(N, texto));
+    //printf("Tamanho mEdio: %.2f\n", tam_med(N, texto));
+    printf("Tamanho mais prOximo da mEdia: %d", prox_med(N, texto));
     
-
+    return 0;
 }
