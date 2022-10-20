@@ -1,70 +1,29 @@
-/*#include <stdio.h>
-
-
-
-void recebeVetor(int array[], int tam){
-
-    for(int i = 0; i < tam; i++){
-        scanf("%d", &array[i]);
-    }
-}
-
-
-void imprimeVetor(int array[], int tam){
-    for(int i = 0; i < tam; i++){
-        printf("%d ", array[i]);
-
-    }printf("\n");
-}
-
-
-void zeraVetor(int array[], int tam){
-    for(int i = 0; i < tam; i++){
-        array[i] = 0;
-    }
-}
-
-
-int main(){
-    int n = 4;
-    int array[4]={2, 7, 4, 1};
-    imprimeVetor(array,4);
-
-
-    for(int j = 0; j< 100; j++){
-        for(int i = 0; i < n-1; i ++){
-                if(array[i-1] > array[i]){
-                    int aux = array[i-1];
-                    array[i-1] = array[i];
-                    array[i] = aux;
-                }
-            }
-    }
-
-imprimeVetor(array,4);
-
-return 0;
-}
-*/
-
 #include <stdio.h>
 
-int main(){
+#define MAX 50
+typedef struct {
+    int ra;
+    char nome[MAX];
+    float prova[3];
+} teste;
 
-int matriz[2][2];
-/*
-    for(int i=0; i<1; i++){
-        for(int j=0; j<1; j++){
-      scanf("%d", &matriz[i][j]);
+int main() {
+    int i;
+    int j;
+    teste aluno[2];
+
+    for (i = 0; i < 2; i++) {
+        printf("Determine o Nome do Aluno %d: ", i + 1);
+        fgets(aluno[i].nome, MAX, stdin);
+
+        printf("Determine a Matricula do Aluno &d: ", i + 1);
+        scanf("%i", &aluno[i].ra);
+
+        for (j = 0; j < 3; j++) {
+            printf("Determine a nota da %d Prova: ", j + 1);
+            scanf("%f", &aluno[i].prova[j]);
         }
     }
-
-printf("\n");printf("\n");printf("---------------------------------------------------");printf("\n");printf("\n");
-*/
-    for(int i = 0; i< 2; i++){
-        for(int j = 0; j < 2; j++){
-            printf("X ");
-        }printf("\n");
-    }
-
+    return 0;
 }
+// scanf(" %[^\n]", nome  da stringa  a ser salva);
