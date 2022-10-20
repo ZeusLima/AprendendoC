@@ -56,12 +56,22 @@ float tam_med(int n, char matriz[][202]){
     return soma/n;
 }
 
-/*
-int prox_med(int n, char matriz[][202]){
-    tam_med(n, matriz); 
+
+int prox_med(int n, char matriz[][202]){ //o espacço não é considerado enquanto o underline é considerado
+    float med = tam_med(n, matriz); 
+    int espaço = 0, underline = 0;
+    
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; i++){
+            if(matriz[i][j] == "_"){
+                
+            }
+        }
+    }
+
 
 }
-*/
+
 
 
 int main(){
