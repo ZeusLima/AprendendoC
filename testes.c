@@ -1,174 +1,73 @@
-/*#include<stdio.h> ///EXCHANGE SORT
-int main(void)
-{
-    int array[5], i, j, temp,n;
-
-
-    printf("Enter the number of elements : ");
-    scanf("%d",&n);
-    printf("Enter %d numbers : ",n);
-
-    for (i = 0; i < n; i++){
-        scanf("%d",&array[i]);
-    }
-
-    for(i = 0; i < (n -1); i++){
-        for (j=(i + 1); j < n; j++){
-            if (array[i] > array[j]){
-                temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
-        }
-    }
-    printf("Sorted array is : ");
-
-    for (i = 0; i < n; i++){
-        printf(" %d ",array[i]);
-    }
-
-    return 0;
-}
-
-
-#include<stdio.h> ///EXCHANGE SORT DO PROFESSOR <<<<<<
-
-void imprime_vetor(int v[], int n){
-    for( int i = 0; i < n; i++) printf("%d ", v[i]);
-    printf("\n");
-}
-
-void exchange_sort(int v[], int n){
-
-    for(int i = 0; i<= n-2; i++){
-        imprime_vetor(v,n);
-        for(int j = (i+1); j <= (n-1); j++){
-                if(v[i] > v[j]){
-                    int temp = v[i];
-                    v[i] = v[j];
-                    v[j] = temp;
-                }
-        }
-    }
-    imprime_vetor(v,n);
-
-}
-
-int main(){
-    int n;
-    scanf("%d", &n);
-    int v[n];
-    
-    for (int i = 0; i < n; i++){
-        scanf("%d", &v[i]);
-    }
-   
-    exchange_sort(v, n);
-
-    return 0;
-
-}
-*/
-/*
-
-
-
-#include<stdio.h>
-#include <string.h>
-
-int main(){
-  char texto[] = "André - Atacante - mil gols - campeão mundial - melhor que Pelé";
-  char* pedaco;
-
-  pedaco = strtok(texto, "-");
-
-  while(pedaco != NULL){
-    printf("%s\n", pedaco);
-
-    pedaco = strtok(NULL, "-");
-  }
-
-  return 0;
-}
-
-#include<stdio.h>
-#include <string.h>
-
-int main(){
-
-printf("\n");printf("\n");
-
-  char texto[] = "um dois tres quatro cinco";
-  char* pedaco;
-  printf("texto original: %s\n", texto);
-
-    pedaco = strtok(texto, " ");
-    printf("texto pos funcao 1: %s\n", texto);
-    printf("1 %s\n", pedaco);
-    
-
-    pedaco = strtok(NULL, " ");
-    printf("texto pos funcao 2: %s\n", texto);
-    printf("2 %s\n", pedaco);
-
-    pedaco = strtok(NULL, " ");
-    printf("texto pos funcao 3: %s\n", texto);
-    printf("3 %s\n", pedaco);
-
-printf("\n");printf("\n");
-  return 0;
-}
-*/
-
-
 #include <stdio.h>
 #include <string.h>
 
-int prox_med(int n, char matriz[][202]){ //tanto espaços quanto underline são incluídos
-    float tammanho_medio = tam_med(n, matriz);
-    char * pedaco;
-    int len_txt_mais_prox = 0;
-    
 
-    pedaco = strtok(matriz[0], " ");
+typedef struct{
+    char nome[202];
+    int vitorias;
 
-    char texto_mais_prox = pedaco;
-    len_txt_mais_prox = strlen(texto_mais_prox);
+} time;
 
-    
-    while(pedaco != NULL){
-        
-    pedaco = strtok(NULL, "-");
 
-    if( (strlen(pedaco) > len_txt_mais_prox && strlen(pedaco) < tammanho_medio) || //ou
-        (strlen(pedaco) < len_txt_mais_prox && strlen(pedaco) > tammanho_medio)) { /*o tamanho da palavra cortada mais uma vez for mais proximo da media, ele vira o mais próximo da media*/
-        texto_mais_prox = pedaco;
-        len_txt_mais_prox = strlen(texto_mais_prox);
+void recebe_times(int t, time v[]){
+printf("\n <<< INSIRA NOME VITORIAS DERROAS GOLS FEITOS E SOFRIDOS RESPECTIVAMENTE:\n");
+// não funciona..?
+
+    for(int i = 0; i < t; i++){
+        scanf("%s[^;] ", v[i].nome);
+        scanf("%d", &v[i].vitorias);
     }
-  }
-    //printf("%s", texto_mais_prox);
-    return len_txt_mais_prox;
+}
+
+
+void impressao(int t, time v[]){
+
+printf("\n\n >>> TIME E DADOS INSERIDOS: \n");
+
+    printf("Nome| Vitorias\n");
+
+    for(int i = 0; i < t; i++){
+        
+        //iniciando for de teste para impressão
+
+        for(int j = 0; j < strlen(v[i].nome);j++){
+            if(v[i].nome[j] != ';') {
+                printf("%c",v[i].nome[j]);
+                }
+        }
+
+
+        //finalizando for de teste para impressão
+        
+
+        //printf("%s| ",v[i].nome); não funciona para a questão porque imprime o ';' junto
+
+        printf(" %d| ", v[i].vitorias);
+
+        printf("\n");
+    }
 }
 
 
 
-int main(){
-    int N;
-    
 
-    scanf("%d ", &N);
+    int main(){
 
-    char texto[N][202];
+printf("\n-------\n");
 
-    recebe_textos(N, texto);
-    printf("\n------\n");
-    //imprime_matriz_textos(N,texto);
+printf("INSIRA A QUANTIDADE DE TIMES: ");
 
+    int T=1;
+printf("INSIRA A QUANTIDADE DE TIMES: %d", T);
+    //scanf("%d", &T);
 
-    printf("Tamanho máximo: %d\n", tam_max(N, texto));
-    printf("Tamanho mínimo: %d\n", tam_min(N, texto));
-    printf("Tamanho médio: %.2f\n", tam_med(N, texto));
-    printf("Tamanho mais proximo da media: %d\n", prox_med(N, texto));    
-    
+    time competidores[T];
+printf("\n-------\n");
+    recebe_times(T, competidores);
+printf("\n-------\n");
+
+    impressao(T, competidores);
+
+printf("\n-------\n");
     return 0;
 }

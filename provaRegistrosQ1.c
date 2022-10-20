@@ -14,17 +14,16 @@ typedef struct{
 
 
 void recebe_times(int t, time v[]){
-printf("\n >> INSIRA NOME VITORIAS DERROAS GOLS FEITOS E SOFRIDOS RESPECTIVAMENTE:\n");
+printf("\n <<< INSIRA NOME VITORIAS DERROAS GOLS FEITOS E SOFRIDOS RESPECTIVAMENTE:\n");
 // não funciona..?
 
     for(int i = 0; i < t; i++){
-        scanf("%s[^;]",v[i].nome);
-
-        scanf(" %d", &v[i].vitorias);
-        scanf(" %d", &v[i].empates);        
-        scanf(" %d", &v[i].derrotas);        
-        scanf(" %d", &v[i].gols_feitos);
-        scanf(" %d", &v[i].gols_sofridos);
+        scanf("%s[^;] ", v[i].nome);
+        scanf("%d", &v[i].vitorias);
+        scanf("%d ", &v[i].empates);        
+        scanf("%d ", &v[i].derrotas);        
+        scanf("%d ", &v[i].gols_feitos);
+        scanf("%d", &v[i].gols_sofridos);
 
         v[i].pontos = v[i].vitorias*3 + v[i].empates;
         v[i].saldo_gols = v[i].gols_feitos - v[i].gols_sofridos;
@@ -36,12 +35,25 @@ printf("\n >> INSIRA NOME VITORIAS DERROAS GOLS FEITOS E SOFRIDOS RESPECTIVAMENT
 
 void impressao(int t, time v[]){
 
-printf("\n\n TIME E DADOS INSERIDOS: \n");
+printf("\n\n >>> TIME E DADOS INSERIDOS: \n");
 
     printf("Nome| Pontos| Jogos| Vitorias| Empates| Derrotas| GolsPro| GolsContra| Saldo de Gols\n");
 
     for(int i = 0; i < t; i++){
-        printf("%s| ",v[i].nome);
+        
+        //iniciando for de teste para impressão
+
+        for(int j = 0; j < strlen(v[i].nome);j++){
+            if(v[i].nome[j] != ';') {
+                printf("%c",v[i].nome[j]);
+                }
+        }
+        printf("| ", v[i].pontos);
+
+        //finalizando for de teste para impressão
+        
+
+        //printf("%s| ",v[i].nome); não funciona para a questão porque imprime o ';' junto
         printf("%d| ", v[i].pontos);
         printf("%d| ", v[i].partidas);
         printf("%d| ", v[i].vitorias);
@@ -69,16 +81,17 @@ void bubbleSort( int n, time array[]){
             }
 
     }
-}
+        
+    }
 
-int main(){
+    int main(){
 
 printf("\n-------\n");
 
-printf("INSIRA A QUANTIDADE DE TIMES: 1");
+printf("INSIRA A QUANTIDADE DE TIMES: ");
 
     int T=1;
-
+printf("INSIRA A QUANTIDADE DE TIMES: %d", T);
     //scanf("%d", &T);
 
     time competidores[T];
