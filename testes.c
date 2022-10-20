@@ -69,6 +69,8 @@ int main(){
 
 }
 */
+/*
+
 
 
 #include<stdio.h>
@@ -89,3 +91,84 @@ int main(){
   return 0;
 }
 
+#include<stdio.h>
+#include <string.h>
+
+int main(){
+
+printf("\n");printf("\n");
+
+  char texto[] = "um dois tres quatro cinco";
+  char* pedaco;
+  printf("texto original: %s\n", texto);
+
+    pedaco = strtok(texto, " ");
+    printf("texto pos funcao 1: %s\n", texto);
+    printf("1 %s\n", pedaco);
+    
+
+    pedaco = strtok(NULL, " ");
+    printf("texto pos funcao 2: %s\n", texto);
+    printf("2 %s\n", pedaco);
+
+    pedaco = strtok(NULL, " ");
+    printf("texto pos funcao 3: %s\n", texto);
+    printf("3 %s\n", pedaco);
+
+printf("\n");printf("\n");
+  return 0;
+}
+*/
+
+
+#include <stdio.h>
+#include <string.h>
+
+int prox_med(int n, char matriz[][202]){ //tanto espaços quanto underline são incluídos
+    float tammanho_medio = tam_med(n, matriz);
+    char * pedaco;
+    int len_txt_mais_prox = 0;
+    
+
+    pedaco = strtok(matriz[0], " ");
+
+    char texto_mais_prox = pedaco;
+    len_txt_mais_prox = strlen(texto_mais_prox);
+
+    
+    while(pedaco != NULL){
+        
+    pedaco = strtok(NULL, "-");
+
+    if( (strlen(pedaco) > len_txt_mais_prox && strlen(pedaco) < tammanho_medio) || //ou
+        (strlen(pedaco) < len_txt_mais_prox && strlen(pedaco) > tammanho_medio)) { /*o tamanho da palavra cortada mais uma vez for mais proximo da media, ele vira o mais próximo da media*/
+        texto_mais_prox = pedaco;
+        len_txt_mais_prox = strlen(texto_mais_prox);
+    }
+  }
+    //printf("%s", texto_mais_prox);
+    return len_txt_mais_prox;
+}
+
+
+
+int main(){
+    int N;
+    
+
+    scanf("%d ", &N);
+
+    char texto[N][202];
+
+    recebe_textos(N, texto);
+    printf("\n------\n");
+    //imprime_matriz_textos(N,texto);
+
+
+    printf("Tamanho máximo: %d\n", tam_max(N, texto));
+    printf("Tamanho mínimo: %d\n", tam_min(N, texto));
+    printf("Tamanho médio: %.2f\n", tam_med(N, texto));
+    printf("Tamanho mais proximo da media: %d\n", prox_med(N, texto));    
+    
+    return 0;
+}
