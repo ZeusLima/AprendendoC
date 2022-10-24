@@ -1,73 +1,76 @@
 #include <stdio.h>
-#include <string.h>
-
 
 typedef struct{
-    char nome[202];
-    int vitorias;
 
-} time;
+    char modelo[40];
+    int memoria;
+    float processador, camera, bateria;
+}Smartphone;
 
 
-void recebe_times(int t, time v[]){
-printf("\n <<< INSIRA NOME VITORIAS DERROAS GOLS FEITOS E SOFRIDOS RESPECTIVAMENTE:\n");
-// não funciona..?
+int cadastraSmarphone(int qnt_cadastrada, Smartphone phones[]){
 
-    for(int i = 0; i < t; i++){
-        scanf("%s[^;] ", v[i].nome);
-        scanf("%d", &v[i].vitorias);
-    }
+
+    scanf(" %[^\n]s", phones[qnt_cadastrada].modelo);
+    //getchar();
+    scanf(" %d %f %f %f",   &phones[qnt_cadastrada].memoria,
+                            &phones[qnt_cadastrada].processador,
+                            &phones[qnt_cadastrada].camera,
+                            &phones[qnt_cadastrada].bateria);
+
+
+    qnt_cadastrada += 1;
+
+    return qnt_cadastrada;
+
 }
 
+void pesquisaSmartphone(Smartphone lista[],int contadorDeCadastrados){
 
-void impressao(int t, time v[]){
+    int memo;
+    float proc, cam, bat;
+    int contReqsMin = 0;
 
-printf("\n\n >>> TIME E DADOS INSERIDOS: \n");
+    scanf(" %d %f %f %f", &memo, &proc, &cam, &bat);
 
-    printf("Nome| Vitorias\n");
+    for(int i = 0; i < contadorDeCadastrados; i++){
+        if(lista[i].memoria >= memo && lista[i].processador >= proc && lista[i].camera >= cam && lista[i].bateria >= bat){
 
-    for(int i = 0; i < t; i++){
-        
-        //iniciando for de teste para impressão
+            contReqsMin += 1;
 
-        for(int j = 0; j < strlen(v[i].nome);j++){
-            if(v[i].nome[j] != ';') {
-                printf("%c",v[i].nome[j]);
-                }
+            printf("Modelo: %s\n", lista[i].modelo);
+            printf("Memoria: %dGb\n", lista[i].memoria);
+            printf("Processador: %2.fGhz\n", lista[i].processador);
+            printf("Camera: %2.fMPixels\n", lista[i].camera);
+            printf("Bateria: %2.fmA\n\n", lista[i].bateria);
+
         }
 
-
-        //finalizando for de teste para impressão
-        
-
-        //printf("%s| ",v[i].nome); não funciona para a questão porque imprime o ';' junto
-
-        printf(" %d| ", v[i].vitorias);
-
-        printf("\n");
     }
+    printf("%d smartphones encontrados.", contReqsMin);
+
 }
 
+int main(){
+
+    char resposta;
+    int cont;
+    int contaCadastradoClandestino = 0;
+    Smartphone lista[40]={0};
 
 
+    scanf(" %c", &resposta);
 
-    int main(){
 
-printf("\n-------\n");
+    while(resposta == 's'){
 
-printf("INSIRA A QUANTIDADE DE TIMES: ");
+        cont = cadastraSmarphone(cont,lista);
 
-    int T=1;
-printf("INSIRA A QUANTIDADE DE TIMES: %d", T);
-    //scanf("%d", &T);
+        scanf(" %c", &resposta);
+   
+    }
 
-    time competidores[T];
-printf("\n-------\n");
-    recebe_times(T, competidores);
-printf("\n-------\n");
+    pesquisaSmartphone(lista, cont);
 
-    impressao(T, competidores);
-
-printf("\n-------\n");
     return 0;
 }
